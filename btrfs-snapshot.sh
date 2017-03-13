@@ -2,9 +2,12 @@
 
 # Dependency: btrfs
 BTRFS=${BTRFS:-/sbin/btrfs}
-if ! [ -x "$BTRFS" ]; then
-    echo -e "Dependency not found: btrfs" >&2
-    exit 1
+if ! type $BTRFS >/dev/null 2>&1; then
+    BTRFS=btrfs
+    if ! type $BTRFS >/dev/null 2>&1; then
+        echo "Dependency not found: btrfs" >&2
+        exit 1
+    fi
 fi
 
 # Dependency: stat

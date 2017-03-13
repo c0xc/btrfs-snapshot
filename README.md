@@ -34,6 +34,12 @@ The snapshot base name may only contain letters, digits and underscores.
 Snapshots are stored in the `.snapshot` directory.
 This directory will be created if it doesn't exist.
 
+This script will use `/sbin/btrfs` if it exists.
+Otherwise, it will look for `btrfs` in the PATH (Debian: `/bin/btrfs`).
+Use the `BTRFS` variable to specify another btrfs-progs binary:
+
+    BTRFS=/root/bin/btrfs /root/bin/btrfs-snapshot
+
 
 
 Author
